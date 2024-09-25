@@ -9,7 +9,6 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     var totalTime: TimeInterval = 0
     var isPaused: Bool = true
     var popover: NSPopover!
-    var popoverWindow: PopoverWindow!
     let stopwatch = NSImage( // https://github.com/sam4096/apple-sf-symbols-list
         systemSymbolName: "stopwatch.fill",
         accessibilityDescription: "timer"
@@ -35,6 +34,21 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
 
     func createStatusItem() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    }
+
+    /// Create the "Set..." popover
+    func setUpPopover() {
+        let contentViewController = NSViewController()
+        contentViewController.view = NSView(frame: NSRect(x: 0, y: 0, width: 200, height: 64))
+
+        let textField = NSTextField(frame: NSRect(x: 20, y: 20, width: 160, height: 24))
+        textField.placeholderString = "Enter time ([h:]mm:ss)"
+        textField.delegate = self
+        contentViewController.view.addSubview(textField)
+
+        popover = NSPopover()
+        popover.contentViewController = contentViewController
+        popover.behavior = .transient // Automatically closes when focus is lost
     }
 
     func createMenu() {
@@ -134,21 +148,6 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
                 print("Failed to deliver notification: \(error)")
             }
         }
-    }
-
-    /// Create the "Set..." popover
-    func setUpPopover() {
-        let contentViewController = NSViewController()
-        contentViewController.view = NSView(frame: NSRect(x: 0, y: 0, width: 200, height: 64))
-
-        let textField = NSTextField(frame: NSRect(x: 20, y: 20, width: 160, height: 24))
-        textField.placeholderString = "Enter time ([h:]mm:ss)"
-        textField.delegate = self
-        contentViewController.view.addSubview(textField)
-
-        popover = NSPopover()
-        popover.contentViewController = contentViewController
-        popover.behavior = .transient // Automatically closes when focus is lost
     }
 
     /// Gets called when the user presses Enter in the popover
