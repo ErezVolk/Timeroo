@@ -18,4 +18,5 @@ jobs:
 #        run: |
 #          xcodebuild clean build analyze -scheme "Timeroo" | xcpretty && exit ${PIPESTATUS[0]}
       - uses: mxcl/xcodebuild@v3
-        scheme: Timeroo
+        with:
+          scheme: Timeroo
