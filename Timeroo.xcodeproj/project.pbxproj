@@ -6,16 +6,30 @@
 	objectVersion = 56;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BA00BA912CA463B800CE3618 /* TimerooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00BA902CA463B800CE3618 /* TimerooApp.swift */; };
+		BA00BA952CA463BA00CE3618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA00BA942CA463BA00CE3618 /* Assets.xcassets */; };
+		BA00BA982CA463BA00CE3618 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA00BA972CA463BA00CE3618 /* Preview Assets.xcassets */; };
+		BA00BAA32CA4648500CE3618 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA00BA9F2CA4648500CE3618 /* Info.plist */; };
+		BA00BAA42CA4648500CE3618 /* TimerooAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */; };
+		BA00BAA52CA4648500CE3618 /* StartStop.scpt in Resources */ = {isa = PBXBuildFile; fileRef = BA00BAA12CA4648500CE3618 /* StartStop.scpt */; };
+		BA00BAA62CA4648500CE3618 /* PopoverWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		BA1F3E522C9ED791003EE7FA /* Timeroo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timeroo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA00BA8D2CA463B800CE3618 /* Timeroo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timeroo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA00BA902CA463B800CE3618 /* TimerooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerooApp.swift; sourceTree = "<group>"; };
+		BA00BA942CA463BA00CE3618 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BA00BA972CA463BA00CE3618 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BA00BA992CA463BA00CE3618 /* Timeroo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Timeroo.entitlements; sourceTree = "<group>"; };
+		BA00BA9F2CA4648500CE3618 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerooAppDelegate.swift; sourceTree = "<group>"; };
+		BA00BAA12CA4648500CE3618 /* StartStop.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StartStop.scpt; sourceTree = "<group>"; };
+		BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverWindow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		BA1F3E542C9ED791003EE7FA /* Timeroo */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Timeroo; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
-		BA1F3E4F2C9ED791003EE7FA /* Frameworks */ = {
+		BA00BA8A2CA463B800CE3618 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -25,103 +39,127 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BA1F3E492C9ED791003EE7FA = {
+		BA00BA842CA463B800CE3618 = {
 			isa = PBXGroup;
 			children = (
-				BA1F3E542C9ED791003EE7FA /* Timeroo */,
-				BA1F3E532C9ED791003EE7FA /* Products */,
+				BA00BA8F2CA463B800CE3618 /* Timeroo */,
+				BA00BA8E2CA463B800CE3618 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		BA1F3E532C9ED791003EE7FA /* Products */ = {
+		BA00BA8E2CA463B800CE3618 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA1F3E522C9ED791003EE7FA /* Timeroo.app */,
+				BA00BA8D2CA463B800CE3618 /* Timeroo.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BA00BA8F2CA463B800CE3618 /* Timeroo */ = {
+			isa = PBXGroup;
+			children = (
+				BA00BA9F2CA4648500CE3618 /* Info.plist */,
+				BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */,
+				BA00BAA12CA4648500CE3618 /* StartStop.scpt */,
+				BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */,
+				BA00BA902CA463B800CE3618 /* TimerooApp.swift */,
+				BA00BA942CA463BA00CE3618 /* Assets.xcassets */,
+				BA00BA992CA463BA00CE3618 /* Timeroo.entitlements */,
+				BA00BA962CA463BA00CE3618 /* Preview Content */,
+			);
+			path = Timeroo;
+			sourceTree = "<group>";
+		};
+		BA00BA962CA463BA00CE3618 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BA00BA972CA463BA00CE3618 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BA1F3E512C9ED791003EE7FA /* Timeroo */ = {
+		BA00BA8C2CA463B800CE3618 /* Timeroo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA1F3E612C9ED792003EE7FA /* Build configuration list for PBXNativeTarget "Timeroo" */;
+			buildConfigurationList = BA00BA9C2CA463BA00CE3618 /* Build configuration list for PBXNativeTarget "Timeroo" */;
 			buildPhases = (
-				BA1F3E4E2C9ED791003EE7FA /* Sources */,
-				BA1F3E4F2C9ED791003EE7FA /* Frameworks */,
-				BA1F3E502C9ED791003EE7FA /* Resources */,
+				BA00BA892CA463B800CE3618 /* Sources */,
+				BA00BA8A2CA463B800CE3618 /* Frameworks */,
+				BA00BA8B2CA463B800CE3618 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				BA1F3E542C9ED791003EE7FA /* Timeroo */,
-			);
 			name = Timeroo;
-			packageProductDependencies = (
-			);
 			productName = Timeroo;
-			productReference = BA1F3E522C9ED791003EE7FA /* Timeroo.app */;
+			productReference = BA00BA8D2CA463B800CE3618 /* Timeroo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		BA1F3E4A2C9ED791003EE7FA /* Project object */ = {
+		BA00BA852CA463B800CE3618 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
-					BA1F3E512C9ED791003EE7FA = {
-						CreatedOnToolsVersion = 16.0;
+					BA00BA8C2CA463B800CE3618 = {
+						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
-			buildConfigurationList = BA1F3E4D2C9ED791003EE7FA /* Build configuration list for PBXProject "Timeroo" */;
-			compatibilityVersion = "Xcode 12.0";
+			buildConfigurationList = BA00BA882CA463B800CE3618 /* Build configuration list for PBXProject "Timeroo" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = BA1F3E492C9ED791003EE7FA;
-			minimizedProjectReferenceProxies = 1;
-			productRefGroup = BA1F3E532C9ED791003EE7FA /* Products */;
+			mainGroup = BA00BA842CA463B800CE3618;
+			productRefGroup = BA00BA8E2CA463B800CE3618 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BA1F3E512C9ED791003EE7FA /* Timeroo */,
+				BA00BA8C2CA463B800CE3618 /* Timeroo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BA1F3E502C9ED791003EE7FA /* Resources */ = {
+		BA00BA8B2CA463B800CE3618 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA00BA982CA463BA00CE3618 /* Preview Assets.xcassets in Resources */,
+				BA00BA952CA463BA00CE3618 /* Assets.xcassets in Resources */,
+				BA00BAA52CA4648500CE3618 /* StartStop.scpt in Resources */,
+				BA00BAA32CA4648500CE3618 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BA1F3E4E2C9ED791003EE7FA /* Sources */ = {
+		BA00BA892CA463B800CE3618 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA00BAA42CA4648500CE3618 /* TimerooAppDelegate.swift in Sources */,
+				BA00BAA62CA4648500CE3618 /* PopoverWindow.swift in Sources */,
+				BA00BA912CA463B800CE3618 /* TimerooApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		BA1F3E5F2C9ED792003EE7FA /* Debug */ = {
+		BA00BA9A2CA463BA00CE3618 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -174,7 +212,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -184,7 +222,7 @@
 			};
 			name = Debug;
 		};
-		BA1F3E602C9ED792003EE7FA /* Release */ = {
+		BA00BA9B2CA463BA00CE3618 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -231,7 +269,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -239,7 +277,7 @@
 			};
 			name = Release;
 		};
-		BA1F3E622C9ED792003EE7FA /* Debug */ = {
+		BA00BA9D2CA463BA00CE3618 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -249,17 +287,14 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Timeroo/Preview Content\"";
-				DEVELOPMENT_TEAM = 556Z633MCL;
-				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.erezvolk.Timeroo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -268,7 +303,7 @@
 			};
 			name = Debug;
 		};
-		BA1F3E632C9ED792003EE7FA /* Release */ = {
+		BA00BA9E2CA463BA00CE3618 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -278,17 +313,14 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Timeroo/Preview Content\"";
-				DEVELOPMENT_TEAM = 556Z633MCL;
-				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.erezvolk.Timeroo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -300,25 +332,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BA1F3E4D2C9ED791003EE7FA /* Build configuration list for PBXProject "Timeroo" */ = {
+		BA00BA882CA463B800CE3618 /* Build configuration list for PBXProject "Timeroo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA1F3E5F2C9ED792003EE7FA /* Debug */,
-				BA1F3E602C9ED792003EE7FA /* Release */,
+				BA00BA9A2CA463BA00CE3618 /* Debug */,
+				BA00BA9B2CA463BA00CE3618 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA1F3E612C9ED792003EE7FA /* Build configuration list for PBXNativeTarget "Timeroo" */ = {
+		BA00BA9C2CA463BA00CE3618 /* Build configuration list for PBXNativeTarget "Timeroo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA1F3E622C9ED792003EE7FA /* Debug */,
-				BA1F3E632C9ED792003EE7FA /* Release */,
+				BA00BA9D2CA463BA00CE3618 /* Debug */,
+				BA00BA9E2CA463BA00CE3618 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = BA1F3E4A2C9ED791003EE7FA /* Project object */;
+	rootObject = BA00BA852CA463B800CE3618 /* Project object */;
 }
