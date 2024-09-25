@@ -16,14 +16,28 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     )
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Remove the app from Force Quit menu
-        NSApplication.shared.setActivationPolicy(.prohibited)
-
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        disableForceQuit()
+        createStatusItem()
         updateStatusBarTitle()
         setUpPopover()
+        createMenu()
+        requestNotificationPermissions()
+    }
 
-        // Create the menu
+    /// Stop the timer if active
+    func applicationWillTerminate(_ aNotification: Notification) {
+        timer?.invalidate()
+    }
+
+    func disableForceQuit() {
+        NSApplication.shared.setActivationPolicy(.prohibited)
+    }
+
+    func createStatusItem() {
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    }
+
+    func createMenu() {
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Start/Pause", action: #selector(startPauseTimer), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Clear", action: #selector(clearTimer), keyEquivalent: ""))
@@ -32,18 +46,14 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(quitApplication), keyEquivalent: ""))
         statusItem.menu = menu
+    }
 
-        // Request Notification Permissions
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { granted, error in
+    func requestNotificationPermissions() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { _, error in
             if let error = error {
                 print("Failed to request notification permission: \(error)")
             }
         }
-    }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Stop the timer if active
-        timer?.invalidate()
     }
 
     @objc func startPauseTimer() {
@@ -74,6 +84,7 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
         }
     }
 
+    /// Called every second by the timer
     @objc func updateTimer() {
         totalTime += 1
         updateStatusBarTitle()
@@ -115,7 +126,6 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
 
     func sendNotification(_ body: String) {
         let content = UNMutableNotificationContent()
-        content.title = "Timeroo"
         content.body = body
 
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
@@ -125,21 +135,22 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
             }
         }
     }
-    
+
+    /// Create the "Set..." popover
     func setUpPopover() {
         let contentViewController = NSViewController()
         contentViewController.view = NSView(frame: NSRect(x: 0, y: 0, width: 200, height: 64))
-        
+
         let textField = NSTextField(frame: NSRect(x: 20, y: 20, width: 160, height: 24))
         textField.placeholderString = "Enter time ([h:]mm:ss)"
         textField.delegate = self
         contentViewController.view.addSubview(textField)
-        
+
         popover = NSPopover()
         popover.contentViewController = contentViewController
         popover.behavior = .transient // Automatically closes when focus is lost
     }
-    
+
     /// Gets called when the user presses Enter in the popover
     func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
         if commandSelector == #selector(NSResponder.insertNewline(_:)) {
@@ -148,27 +159,31 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
         }
         return false
     }
-    
+
+    func getPopoverTextField() -> NSTextField? {
+        return popover.contentViewController?.view.subviews.first(where: { $0 is NSTextField }) as? NSTextField
+    }
+
     @objc func showPopover() {
         // Show the popover next to the status item
         if let button = statusItem.button {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-            if let textField = popover.contentViewController?.view.subviews.first(where: { $0 is NSTextField }) as? NSTextField {
+            if let textField = getPopoverTextField() {
                 textField.becomeFirstResponder() // Make the text field active
             }
         }
     }
-    
+
     @objc func setTimerFromPopover() {
         if let total = parsePopover() {
-            setTimer(total)
-        } else {
+            totalTime = TimeInterval(total)
+            updateStatusBarTitle()
         }
         popover.performClose(nil) // Close the popover after setting the timer
     }
-    
+
     func parsePopover() -> Int? {
-        guard let textField = popover.contentViewController?.view.subviews.first(where: { $0 is NSTextField }) as? NSTextField else {
+        guard let textField = getPopoverTextField() else {
             return nil
         }
 
@@ -207,12 +222,4 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
 
         return seconds + 60 * (minutes + 60 * hours)
     }
-    
-    func setTimer(_ total: Int) {
-        totalTime = TimeInterval(total)
-        updateStatusBarTitle()
-    }
 }
-
-
-
