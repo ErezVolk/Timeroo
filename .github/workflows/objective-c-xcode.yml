@@ -14,9 +14,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-#      - name: Build
-#        run: |
-#          xcodebuild clean build analyze -scheme "Timeroo" | xcpretty && exit ${PIPESTATUS[0]}
-      - uses: mxcl/xcodebuild@v3
-        with:
-          scheme: Timeroo
+      - name: Build
+        run: |
+          xcodebuild clean build analyze -project Timeroo-15.xcodeproj -scheme "Timeroo" | xcpretty && exit ${PIPESTATUS[0]}
+#      - uses: mxcl/xcodebuild@v3
+#        with:
+#          scheme: Timeroo
