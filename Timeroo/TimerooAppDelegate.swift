@@ -38,10 +38,17 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
 
     /// Create the "Set..." popover
     func setUpPopover() {
+        let box = NSSize(width: 160, height: 24)
+        let margin = NSSize(width: 16, height: 12)
         let contentViewController = NSViewController()
-        contentViewController.view = NSView(frame: NSRect(x: 0, y: 0, width: 200, height: 64))
+        contentViewController.view = NSView(frame: NSRect(
+            x: 0,
+            y: 0,
+            width: margin.width * 2 + box.width,
+            height: margin.height * 2 + box.height))
 
-        let textField = NSTextField(frame: NSRect(x: 20, y: 20, width: 160, height: 24))
+        let textField = NSTextField(frame: NSRect(
+            x: margin.width, y: margin.height, width: box.width, height: box.height))
         textField.placeholderString = "Enter time ([h:]mm:ss)"
         textField.delegate = self
         contentViewController.view.addSubview(textField)
