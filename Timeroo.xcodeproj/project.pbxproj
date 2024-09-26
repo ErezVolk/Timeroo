@@ -14,6 +14,7 @@
 		BA00BAA42CA4648500CE3618 /* TimerooAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */; };
 		BA00BAA52CA4648500CE3618 /* StartStop.scpt in Resources */ = {isa = PBXBuildFile; fileRef = BA00BAA12CA4648500CE3618 /* StartStop.scpt */; };
 		BA00BAA62CA4648500CE3618 /* PopoverWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */; };
+		BA13AB012CA5303F0076CFF5 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = BA13AB002CA5303F0076CFF5 /* TODO.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerooAppDelegate.swift; sourceTree = "<group>"; };
 		BA00BAA12CA4648500CE3618 /* StartStop.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StartStop.scpt; sourceTree = "<group>"; };
 		BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverWindow.swift; sourceTree = "<group>"; };
+		BA13AB002CA5303F0076CFF5 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */,
 				BA00BAA12CA4648500CE3618 /* StartStop.scpt */,
 				BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */,
+				BA13AB002CA5303F0076CFF5 /* TODO.md */,
 				BA00BA902CA463B800CE3618 /* TimerooApp.swift */,
 				BA00BA942CA463BA00CE3618 /* Assets.xcassets */,
 				BA00BA992CA463BA00CE3618 /* Timeroo.entitlements */,
@@ -140,6 +143,7 @@
 				BA00BA952CA463BA00CE3618 /* Assets.xcassets in Resources */,
 				BA00BAA52CA4648500CE3618 /* StartStop.scpt in Resources */,
 				BA00BAA32CA4648500CE3618 /* Info.plist in Resources */,
+				BA13AB012CA5303F0076CFF5 /* TODO.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
