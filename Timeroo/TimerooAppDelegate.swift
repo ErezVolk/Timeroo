@@ -189,42 +189,26 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     }
 
     func parsePopover() -> Int? {
-        guard let textField = getPopoverTextField() else {
-            return nil
-        }
+        guard let textField = getPopoverTextField() else { return nil }
 
         let timeString = textField.stringValue
         textField.stringValue = ""  // For next time
         let parts = timeString.split(separator: ":")
 
-        guard parts.count == 2 || parts.count == 3 else {
-            return nil
-        }
+        guard parts.count == 2 || parts.count == 3 else { return nil }
 
-        guard let seconds = Int(parts[parts.count - 1]) else {
-            return nil
-        }
-        guard seconds >= 0 && seconds < 60 else {
-            return nil
-        }
+        guard let seconds = Int(parts[parts.count - 1]) else { return nil }
+        guard seconds >= 0 && seconds < 60 else { return nil }
 
-        guard let minutes = Int(parts[parts.count - 2]) else {
-            return nil
-        }
-        guard minutes >= 0 && minutes < 60 else {
-            return nil
-        }
+        guard let minutes = Int(parts[parts.count - 2]) else { return nil }
+        guard minutes >= 0 && minutes < 60 else { return nil }
 
         if parts.count <= 2 {
             return seconds + 60 * minutes
         }
 
-        guard let hours = Int(parts[0]) else {
-            return nil
-        }
-        guard hours >= 0 else {
-            return nil
-        }
+        guard let hours = Int(parts[0]) else { return nil }
+        guard hours >= 0 else { return nil }
 
         return seconds + 60 * (minutes + 60 * hours)
     }
