@@ -15,7 +15,7 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     )
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        disableForceQuit()
+        hideFromDock()
         createStatusItem()
         updateStatusBarTitle()
         setUpPopover()
@@ -28,8 +28,8 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
         timer?.invalidate()
     }
 
-    func disableForceQuit() {
-        NSApplication.shared.setActivationPolicy(.prohibited)
+    func hideFromDock() {
+        NSApplication.shared.setActivationPolicy(.accessory)
     }
 
     func createStatusItem() {
