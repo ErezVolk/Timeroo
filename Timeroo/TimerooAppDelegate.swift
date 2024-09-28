@@ -60,13 +60,23 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
 
     func createMenu() {
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "Start/Pause", action: #selector(startPauseTimer), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "Clear", action: #selector(clearTimer), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "Set...", action: #selector(showPopover), keyEquivalent: ""))
+        menu.addItem(makeItem(title: "Start/Pause", action: #selector(startPauseTimer), sfName: "playpause.circle"))
+        menu.addItem(makeItem(title: "Clear", action: #selector(clearTimer), sfName: "restart.circle"))
+        menu.addItem(makeItem(title: "Set...", action: #selector(showPopover), sfName: "exclamationmark.arrow.circlepath"))
 
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "Quit", action: #selector(quitApplication), keyEquivalent: ""))
+        menu.addItem(makeItem(title: "Quit", action: #selector(quitApplication), sfName: "eject.circle"))
         statusItem.menu = menu
+    }
+
+    /// Create an item for the status menu (wraps `NSMenuItem` constructor)
+    /// - parameter sfName: Optional system image name for the menu entry.
+    private func makeItem(title: String, action: Selector, keyEquivalent: String = "", sfName: String? = nil) -> NSMenuItem {
+        let item = NSMenuItem(title: title, action: action, keyEquivalent: "")
+        if let sfName {
+            item.image = NSImage(systemSymbolName: sfName, accessibilityDescription: sfName)
+        }
+        return item
     }
 
     func requestNotificationPermissions() {
