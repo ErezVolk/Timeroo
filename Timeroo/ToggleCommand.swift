@@ -1,14 +1,11 @@
 //  Created by Erez Volk
 
 import Foundation
-import AppKit
 
+@MainActor
 @objc class ToggleCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
-        print("EREZ \(NSApplication.shared)")
-        print("EREZ \(NSApplication.shared.delegate!)")
-        //let delegate = NSApplication.shared.delegate as! TimerooAppDelegate
-        //delegate.startPauseTimer()
+        TimerooAppDelegate.shared?.startPauseTimer()
         return nil
     }
 }

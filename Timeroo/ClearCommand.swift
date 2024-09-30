@@ -4,7 +4,7 @@ import Foundation
 
 @objc class ClearCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
-        print("Clear Called")
+        TimerooAppDelegate.shared?.clearTimer()
         return nil
     }
 }

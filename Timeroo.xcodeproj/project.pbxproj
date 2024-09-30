@@ -69,11 +69,11 @@
 			children = (
 				BA22E0F12CAACE2E008E9730 /* Info.plist */,
 				BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */,
-				BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */,
 				BA22E0F62CAAD2FF008E9730 /* ToggleCommand.swift */,
 				BA22E0FA2CAAD57E008E9730 /* ClearCommand.swift */,
 				BA6D2CDB2CAAEDAB004BA2B8 /* AdjustCommand.swift */,
 				BA00BA902CA463B800CE3618 /* TimerooApp.swift */,
+				BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */,
 				BA22E0F42CAACFB7008E9730 /* Timeroo.sdef */,
 				BA00BAA12CA4648500CE3618 /* StartPause.scpt */,
 				BA13AB002CA5303F0076CFF5 /* TODO.md */,
