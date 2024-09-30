@@ -2,7 +2,7 @@
 
 import Foundation
 
-@objc class StartPauseCommand: NSScriptCommand {
+@objc class ToggleCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
         print("Called")
         return nil
