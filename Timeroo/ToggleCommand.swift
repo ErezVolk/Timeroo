@@ -4,7 +4,7 @@ import Foundation
 
 @objc class ToggleCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
-        print("Called")
+        print("Toggle Called")
         return nil
     }
 }

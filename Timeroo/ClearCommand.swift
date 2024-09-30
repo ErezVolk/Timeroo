@@ -4,7 +4,7 @@ import Foundation
 
 @objc class ClearCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
-        print("Called")
+        print("Clear Called")
         return nil
     }
 }

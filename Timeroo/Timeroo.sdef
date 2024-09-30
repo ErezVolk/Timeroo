@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
 <dictionary title="Timeroo Terminology">
-    <suite name="Timeroo Suite" code="Tmro" description="Timeroo scripting classes and commands.">
-        <command name="toggle" code="Toggle" description="Start or pause the stopwatch.">
+    <suite name="Timeroo Suite" code="Tmro" description="Timeroo scripting commands.">
+        <command name="toggle" code="TtToggle" description="Start or pause the stopwatch.">
             <cocoa class="Timeroo.ToggleCommand"/>
         </command>
-        <command name="clear" code="Clea" description="Reset to 0:00:00.">
-            <cocoa class="Timeroo.ClearCommand"/>
+        <command name="toggle" code="CccClear" description="Start or pause the stopwatch.">
+            <cocoa class="Timeroo.ToggleCommand"/>
+        </command>
+        <command name="adjust" code="AaAdjust" description="Set stopwatch to specific time.">
+            <cocoa class="Timeroo.AdjustCommand"/>
+            <parameter name="time" code="NewT" type="text" description="New value in [H:]MM:SS format.">
+                <cocoa key="NewTime"/>
+            </parameter>
+            <result type="text" description="Returns the new value."/>
         </command>
     </suite>
 </dictionary>
