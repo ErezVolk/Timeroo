@@ -13,7 +13,7 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
         systemSymbolName: "stopwatch.fill",
         accessibilityDescription: "timer"
     )
-
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         hideFromDock()
         createStatusItem()
