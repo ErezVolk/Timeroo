@@ -2,8 +2,10 @@
 <!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
 <dictionary title="Timeroo Terminology">
     <suite name="Timeroo Suite" code="Tmro" description="Timeroo scripting classes and commands.">
-        <command name="startpause" code="startPause">
+        <command name="toggle" code="Tggl">
             <cocoa class="Timeroo.StartPauseCommand"/>
         </command>
-    </suite>
+        <command name="clear" code="Clea">
+            <cocoa class="Timeroo.ClearCommand"/>
+        </command>    </suite>
 </dictionary>
