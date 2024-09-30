@@ -10,7 +10,6 @@
 		BA00BA912CA463B800CE3618 /* TimerooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00BA902CA463B800CE3618 /* TimerooApp.swift */; };
 		BA00BA952CA463BA00CE3618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA00BA942CA463BA00CE3618 /* Assets.xcassets */; };
 		BA00BA982CA463BA00CE3618 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA00BA972CA463BA00CE3618 /* Preview Assets.xcassets */; };
-		BA00BAA32CA4648500CE3618 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA00BA9F2CA4648500CE3618 /* Info.plist */; };
 		BA00BAA42CA4648500CE3618 /* TimerooAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */; };
 		BA00BAA52CA4648500CE3618 /* StartStop.scpt in Resources */ = {isa = PBXBuildFile; fileRef = BA00BAA12CA4648500CE3618 /* StartStop.scpt */; };
 		BA00BAA62CA4648500CE3618 /* PopoverWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */; };
@@ -23,7 +22,6 @@
 		BA00BA942CA463BA00CE3618 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA00BA972CA463BA00CE3618 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BA00BA992CA463BA00CE3618 /* Timeroo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Timeroo.entitlements; sourceTree = "<group>"; };
-		BA00BA9F2CA4648500CE3618 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerooAppDelegate.swift; sourceTree = "<group>"; };
 		BA00BAA12CA4648500CE3618 /* StartStop.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StartStop.scpt; sourceTree = "<group>"; };
 		BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverWindow.swift; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 		BA00BA8F2CA463B800CE3618 /* Timeroo */ = {
 			isa = PBXGroup;
 			children = (
-				BA00BA9F2CA4648500CE3618 /* Info.plist */,
 				BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */,
 				BA00BAA12CA4648500CE3618 /* StartStop.scpt */,
 				BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */,
@@ -142,7 +139,6 @@
 				BA00BA982CA463BA00CE3618 /* Preview Assets.xcassets in Resources */,
 				BA00BA952CA463BA00CE3618 /* Assets.xcassets in Resources */,
 				BA00BAA52CA4648500CE3618 /* StartStop.scpt in Resources */,
-				BA00BAA32CA4648500CE3618 /* Info.plist in Resources */,
 				BA13AB012CA5303F0076CFF5 /* TODO.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +289,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Timeroo/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -319,6 +316,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Timeroo/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
