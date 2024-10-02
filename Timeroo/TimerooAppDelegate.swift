@@ -3,39 +3,6 @@
 import Cocoa
 import UserNotifications
 
-/// Allow image resizing
-/// From https://gist.github.com/Farini/deba4896bed178bc685f90c023a3840c
-extension NSImage {
-    ///  Copies the current image and resizes it to the given size.
-    ///
-    ///  - parameter size: The size of the new image.
-    ///
-    ///  - returns: The resized copy of the given image.
-    func copy(size: NSSize) -> NSImage? {
-        // Create a new rect with given width and height
-        let frame = NSMakeRect(0, 0, size.width, size.height)
-        
-        // Get the best representation for the given size.
-        guard let rep = self.bestRepresentation(for: frame, context: nil, hints: nil) else {
-            return nil
-        }
-        
-        // Create an empty image with the given size.
-        let img = NSImage(size: size)
-        
-        // Set the drawing context and make sure to remove the focus before returning.
-        img.lockFocus()
-        defer { img.unlockFocus() }
-        
-        // Draw the new image
-        if rep.draw(in: frame) {
-            return img
-        }
-        
-        // Return nil in case something went wrong.
-        return nil
-    }
-}
 
 class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuDelegate {
     /// Allow the AppleScript command objects to access the running app (hack, but I couldn't find a better way)
