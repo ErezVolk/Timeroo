@@ -3,24 +3,56 @@
 import Cocoa
 import UserNotifications
 
+/// Allow image resizing
+/// From https://gist.github.com/Farini/deba4896bed178bc685f90c023a3840c
+extension NSImage {
+    ///  Copies the current image and resizes it to the given size.
+    ///
+    ///  - parameter size: The size of the new image.
+    ///
+    ///  - returns: The resized copy of the given image.
+    func copy(size: NSSize) -> NSImage? {
+        // Create a new rect with given width and height
+        let frame = NSMakeRect(0, 0, size.width, size.height)
+        
+        // Get the best representation for the given size.
+        guard let rep = self.bestRepresentation(for: frame, context: nil, hints: nil) else {
+            return nil
+        }
+        
+        // Create an empty image with the given size.
+        let img = NSImage(size: size)
+        
+        // Set the drawing context and make sure to remove the focus before returning.
+        img.lockFocus()
+        defer { img.unlockFocus() }
+        
+        // Draw the new image
+        if rep.draw(in: frame) {
+            return img
+        }
+        
+        // Return nil in case something went wrong.
+        return nil
+    }
+}
+
 class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuDelegate {
+    /// Allow the AppleScript command objects to access the running app (hack, but I couldn't find a better way)
     static var shared: TimerooAppDelegate?
     var statusItem: NSStatusItem!
     var timer: Timer?
     var totalTime: TimeInterval = 0
     var isPaused: Bool = true
-    var popover: NSPopover!
-    let stopwatch = NSImage( // https://github.com/sam4096/apple-sf-symbols-list
-        systemSymbolName: "stopwatch.fill",
-        accessibilityDescription: "timer"
-    )
+    var setPopover: NSPopover!
+    let idleImage = NSImage(systemSymbolName: "stopwatch.fill", accessibilityDescription: "timer")
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         TimerooAppDelegate.shared = self
         hideFromDock()
         createStatusItem()
         updateStatusBarTitle()
-        setUpPopover()
+        createSetPopover()
         createMenu()
         requestNotificationPermissions()
     }
@@ -38,8 +70,7 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate, 
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     }
     
-    /// Create the "Set..." popover
-    func setUpPopover() {
+    func createSetPopover() {
         let box = NSSize(width: 160, height: 24)
         let margin = NSSize(width: 16, height: 12)
         let contentViewController = NSViewController()
@@ -55,9 +86,14 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate, 
         textField.delegate = self
         contentViewController.view.addSubview(textField)
         
-        popover = NSPopover()
+        setPopover = createPopover(contentViewController)
+    }
+    
+    func createPopover(_ contentViewController: NSViewController) -> NSPopover {
+        let popover = NSPopover()
         popover.contentViewController = contentViewController
         popover.behavior = .transient // Automatically closes when focus is lost
+        return popover
     }
     
     func createMenu() {
@@ -65,7 +101,7 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate, 
         menu.delegate = self
         menu.addItem(makeItem(title: "Start/Pause", action: #selector(startPauseTimer), sfName: "playpause.circle"))
         menu.addItem(makeItem(title: "Clear", action: #selector(clearTimer), sfName: "restart.circle"))
-        menu.addItem(makeItem(title: "Set...", action: #selector(showPopover), sfName: "exclamationmark.arrow.circlepath"))
+        menu.addItem(makeItem(title: "Set...", action: #selector(showSetPopover), sfName: "exclamationmark.arrow.circlepath"))
         
         menu.addItem(NSMenuItem.separator())
         menu.addItem(makeItem(title: "Quit", action: #selector(quitApplication), sfName: "eject.circle"))
@@ -74,7 +110,7 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate, 
     
     /// Create an item for the status menu (wraps `NSMenuItem` constructor)
     /// - parameter sfName: Optional system image name for the menu entry.
-    private func makeItem(title: String, action: Selector, keyEquivalent: String = "", sfName: String? = nil) -> NSMenuItem {
+    func makeItem(title: String, action: Selector, keyEquivalent: String = "", sfName: String? = nil) -> NSMenuItem {
         let item = NSMenuItem(title: title, action: action, keyEquivalent: "")
         if let sfName {
             item.image = NSImage(systemSymbolName: sfName, accessibilityDescription: sfName)
@@ -138,7 +174,7 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate, 
     
     func updateStatusBarTitle() {
         if totalTime == 0 && isPaused {
-            statusItem.button?.image = stopwatch
+            statusItem.button?.image = idleImage
             statusItem.button?.title = ""
             statusItem.button?.appearsDisabled = false
         } else {
@@ -180,13 +216,12 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate, 
     }
     
     func getPopoverTextField() -> NSTextField? {
-        return popover.contentViewController?.view.subviews.first(where: { $0 is NSTextField }) as? NSTextField
+        return setPopover.contentViewController?.view.subviews.first(where: { $0 is NSTextField }) as? NSTextField
     }
     
-    @objc func showPopover() {
-        // Show the popover next to the status item
+    @objc func showSetPopover() {
         if let button = statusItem.button {
-            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+            setPopover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
             if let textField = getPopoverTextField() {
                 textField.becomeFirstResponder() // Make the text field active
             }
@@ -198,7 +233,7 @@ class TimerooAppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate, 
             totalTime = total
             updateStatusBarTitle()
         }
-        popover.performClose(nil) // Close the popover after setting the timer
+        setPopover.performClose(nil) // Close the popover after setting the timer
     }
     
     func parsePopover() -> TimeInterval? {
