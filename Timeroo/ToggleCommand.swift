@@ -6,7 +6,7 @@ import Foundation
 @MainActor
 @objc class ToggleCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
-        TimerooAppDelegate.shared?.startPauseTimer()
+        TimerooMenu.shared?.startPauseTimer()
         return nil
     }
 }

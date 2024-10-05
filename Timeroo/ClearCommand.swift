@@ -5,7 +5,7 @@ import Foundation
 /// Implement the `clear` AppleScript command
 @objc class ClearCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
-        TimerooAppDelegate.shared?.clearTimer()
+        TimerooMenu.shared?.clearTimer()
         return nil
     }
 }

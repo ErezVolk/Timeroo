@@ -5,7 +5,7 @@ import Foundation
 /// Implement the `adjust` AppleScript command
 @objc class AdjustCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
-        let newTime = self.evaluatedArguments!["NewTime"] as! String
-        return TimerooAppDelegate.shared?.setTimerFromString(newTime)
+        let newTime = self.evaluatedArguments!["NewTime"] as? String ?? "N/A"
+        return TimerooMenu.shared?.setTimerFromString(newTime)
     }
 }

@@ -10,7 +10,7 @@
 		BA00BA912CA463B800CE3618 /* TimerooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00BA902CA463B800CE3618 /* TimerooApp.swift */; };
 		BA00BA952CA463BA00CE3618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA00BA942CA463BA00CE3618 /* Assets.xcassets */; };
 		BA00BA982CA463BA00CE3618 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA00BA972CA463BA00CE3618 /* Preview Assets.xcassets */; };
-		BA00BAA42CA4648500CE3618 /* TimerooAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */; };
+		BA00BAA42CA4648500CE3618 /* TimerooMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00BAA02CA4648500CE3618 /* TimerooMenu.swift */; };
 		BA00BAA52CA4648500CE3618 /* StartPause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = BA00BAA12CA4648500CE3618 /* StartPause.scpt */; };
 		BA00BAA62CA4648500CE3618 /* PopoverWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */; };
 		BA13AB012CA5303F0076CFF5 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = BA13AB002CA5303F0076CFF5 /* TODO.md */; };
@@ -26,7 +26,7 @@
 		BA00BA942CA463BA00CE3618 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA00BA972CA463BA00CE3618 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BA00BA992CA463BA00CE3618 /* Timeroo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Timeroo.entitlements; sourceTree = "<group>"; };
-		BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerooAppDelegate.swift; sourceTree = "<group>"; };
+		BA00BAA02CA4648500CE3618 /* TimerooMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerooMenu.swift; sourceTree = "<group>"; };
 		BA00BAA12CA4648500CE3618 /* StartPause.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StartPause.scpt; sourceTree = "<group>"; };
 		BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverWindow.swift; sourceTree = "<group>"; };
 		BA13AB002CA5303F0076CFF5 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 				BA22E0FA2CAAD57E008E9730 /* ClearCommand.swift */,
 				BA6D2CDB2CAAEDAB004BA2B8 /* AdjustCommand.swift */,
 				BA00BA902CA463B800CE3618 /* TimerooApp.swift */,
-				BA00BAA02CA4648500CE3618 /* TimerooAppDelegate.swift */,
+				BA00BAA02CA4648500CE3618 /* TimerooMenu.swift */,
 				BA22E0F42CAACFB7008E9730 /* Timeroo.sdef */,
 				BA00BAA12CA4648500CE3618 /* StartPause.scpt */,
 				BA13AB002CA5303F0076CFF5 /* TODO.md */,
@@ -167,7 +167,7 @@
 			files = (
 				BA6D2CDC2CAAEDAB004BA2B8 /* AdjustCommand.swift in Sources */,
 				BA22E0FB2CAAD57E008E9730 /* ClearCommand.swift in Sources */,
-				BA00BAA42CA4648500CE3618 /* TimerooAppDelegate.swift in Sources */,
+				BA00BAA42CA4648500CE3618 /* TimerooMenu.swift in Sources */,
 				BA22E0F72CAAD2FF008E9730 /* ToggleCommand.swift in Sources */,
 				BA00BAA62CA4648500CE3618 /* PopoverWindow.swift in Sources */,
 				BA00BA912CA463B800CE3618 /* TimerooApp.swift in Sources */,
