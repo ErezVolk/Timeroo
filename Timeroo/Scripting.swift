@@ -3,7 +3,6 @@
 import Foundation
 
 /// Implement the `toggle` AppleScript command
-@MainActor
 @objc class ToggleCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
         TimerooMenu.shared?.startPauseTimer()
@@ -28,7 +27,6 @@ import Foundation
 }
 
 /// Implement the `start` AppleScript command
-@MainActor
 @objc class StartCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
         TimerooMenu.shared?.startTimer()
@@ -37,7 +35,6 @@ import Foundation
 }
 
 /// Implement the `pause` AppleScript command
-@MainActor
 @objc class PauseCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
         TimerooMenu.shared?.pauseTimer()
