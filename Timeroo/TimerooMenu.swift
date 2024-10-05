@@ -11,6 +11,7 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
     var totalTime: TimeInterval = 0
     var isPaused: Bool = true
     var setPopover: NSPopover!
+    var startPauseCommand: NSMenuItem!
     var clearCommand: NSMenuItem!
     let idleImage = NSImage(systemSymbolName: "stopwatch.fill", accessibilityDescription: "timer")
 
@@ -66,12 +67,13 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
     func createMenu() {
         let menu = NSMenu()
         menu.delegate = self
-        menu.addItem(makeItem(title: "Start/Pause",
-                              action: #selector(startPauseTimer),
-                              sfName: "playpause.circle"))
+        startPauseCommand = makeItem(title: "Start",
+                                     action: #selector(startPauseTimer),
+                                     sfName: "playpause.circle")
         clearCommand = makeItem(title: "Clear",
                                 action: #selector(clearTimer),
                                 sfName: "restart.circle")
+        menu.addItem(startPauseCommand)
         menu.addItem(clearCommand)
         menu.addItem(makeItem(title: "Set...",
                               action: #selector(showSetPopover),
@@ -160,6 +162,7 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
             statusItem.button?.title = getTimeString()
             statusItem.button?.appearsDisabled = isPaused
         }
+        startPauseCommand.title = isPaused ? "Start" : "Pause"
         clearCommand.isEnabled = totalTime > 0
     }
 
