@@ -105,8 +105,8 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
             }
         }
     }
-
-    @objc func startPauseTimer() {
+    
+    @objc func startTimer() {
         if isPaused {
             // Start the timer
             timer = Timer.scheduledTimer(
@@ -124,13 +124,24 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
             } else {
                 sendNotification("Resuming at \(getTimeString())")
             }
-        } else {
-            // Pause the timer
+        }
+    }
+    
+    @objc func pauseTimer() {
+        if !isPaused {
             timer?.invalidate()
             timer = nil
             isPaused = true
             updateStatusBarTitle()
             sendNotification("Pausing at \(getTimeString())")
+        }
+    }
+
+    @objc func startPauseTimer() {
+        if isPaused {
+            startTimer()
+        } else {
+            pauseTimer()
         }
     }
 

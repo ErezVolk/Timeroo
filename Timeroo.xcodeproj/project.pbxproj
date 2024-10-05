@@ -15,9 +15,7 @@
 		BA00BAA62CA4648500CE3618 /* PopoverWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */; };
 		BA13AB012CA5303F0076CFF5 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = BA13AB002CA5303F0076CFF5 /* TODO.md */; };
 		BA22E0F52CAACFB7008E9730 /* Timeroo.sdef in Resources */ = {isa = PBXBuildFile; fileRef = BA22E0F42CAACFB7008E9730 /* Timeroo.sdef */; };
-		BA22E0F72CAAD2FF008E9730 /* ToggleCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA22E0F62CAAD2FF008E9730 /* ToggleCommand.swift */; };
-		BA22E0FB2CAAD57E008E9730 /* ClearCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA22E0FA2CAAD57E008E9730 /* ClearCommand.swift */; };
-		BA6D2CDC2CAAEDAB004BA2B8 /* AdjustCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D2CDB2CAAEDAB004BA2B8 /* AdjustCommand.swift */; };
+		BA22E0F72CAAD2FF008E9730 /* Scripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA22E0F62CAAD2FF008E9730 /* Scripting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,9 +30,7 @@
 		BA13AB002CA5303F0076CFF5 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		BA22E0F12CAACE2E008E9730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA22E0F42CAACFB7008E9730 /* Timeroo.sdef */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Timeroo.sdef; sourceTree = "<group>"; };
-		BA22E0F62CAAD2FF008E9730 /* ToggleCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCommand.swift; sourceTree = "<group>"; };
-		BA22E0FA2CAAD57E008E9730 /* ClearCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearCommand.swift; sourceTree = "<group>"; };
-		BA6D2CDB2CAAEDAB004BA2B8 /* AdjustCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustCommand.swift; sourceTree = "<group>"; };
+		BA22E0F62CAAD2FF008E9730 /* Scripting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scripting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,9 +65,7 @@
 			children = (
 				BA22E0F12CAACE2E008E9730 /* Info.plist */,
 				BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */,
-				BA22E0F62CAAD2FF008E9730 /* ToggleCommand.swift */,
-				BA22E0FA2CAAD57E008E9730 /* ClearCommand.swift */,
-				BA6D2CDB2CAAEDAB004BA2B8 /* AdjustCommand.swift */,
+				BA22E0F62CAAD2FF008E9730 /* Scripting.swift */,
 				BA00BA902CA463B800CE3618 /* TimerooApp.swift */,
 				BA00BAA02CA4648500CE3618 /* TimerooMenu.swift */,
 				BA22E0F42CAACFB7008E9730 /* Timeroo.sdef */,
@@ -165,10 +159,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA6D2CDC2CAAEDAB004BA2B8 /* AdjustCommand.swift in Sources */,
-				BA22E0FB2CAAD57E008E9730 /* ClearCommand.swift in Sources */,
 				BA00BAA42CA4648500CE3618 /* TimerooMenu.swift in Sources */,
-				BA22E0F72CAAD2FF008E9730 /* ToggleCommand.swift in Sources */,
+				BA22E0F72CAAD2FF008E9730 /* Scripting.swift in Sources */,
 				BA00BAA62CA4648500CE3618 /* PopoverWindow.swift in Sources */,
 				BA00BA912CA463B800CE3618 /* TimerooApp.swift in Sources */,
 			);
