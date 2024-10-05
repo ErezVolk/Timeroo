@@ -11,15 +11,16 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
     var totalTime: TimeInterval = 0
     var isPaused: Bool = true
     var setPopover: NSPopover!
+    var clearCommand: NSMenuItem!
     let idleImage = NSImage(systemSymbolName: "stopwatch.fill", accessibilityDescription: "timer")
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         TimerooMenu.shared = self
         hideFromDock()
         createStatusItem()
-        updateStatusBarTitle()
         createSetPopover()
         createMenu()
+        updateStatusBarTitle()
         requestNotificationPermissions()
     }
 
@@ -68,21 +69,26 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
         menu.addItem(makeItem(title: "Start/Pause",
                               action: #selector(startPauseTimer),
                               sfName: "playpause.circle"))
-        menu.addItem(makeItem(title: "Clear",
-                              action: #selector(clearTimer),
-                              sfName: "restart.circle"))
+        clearCommand = makeItem(title: "Clear",
+                                action: #selector(clearTimer),
+                                sfName: "restart.circle")
+        menu.addItem(clearCommand)
         menu.addItem(makeItem(title: "Set...",
                               action: #selector(showSetPopover),
                               sfName: "exclamationmark.arrow.circlepath"))
 
         menu.addItem(NSMenuItem.separator())
         menu.addItem(makeItem(title: "Quit", action: #selector(quitApplication), sfName: "eject.circle"))
+        menu.autoenablesItems = false
         statusItem.menu = menu
     }
 
     /// Create an item for the status menu (wraps `NSMenuItem` constructor)
     /// - parameter sfName: Optional system image name for the menu entry.
-    func makeItem(title: String, action: Selector, keyEquivalent: String = "", sfName: String? = nil) -> NSMenuItem {
+    func makeItem(title: String,
+                  action: Selector,
+                  keyEquivalent: String = "",
+                  sfName: String? = nil) -> NSMenuItem {
         let item = NSMenuItem(title: title, action: action, keyEquivalent: "")
         if let sfName {
             item.image = NSImage(systemSymbolName: sfName, accessibilityDescription: sfName)
@@ -154,6 +160,7 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
             statusItem.button?.title = getTimeString()
             statusItem.button?.appearsDisabled = isPaused
         }
+        clearCommand.isEnabled = totalTime > 0
     }
 
     func getTimeString() -> String {
