@@ -9,5 +9,9 @@
 
 A very simple MacOS status bar Timer app. Made in homage to (but using no code from) the defunct [Thyme](https://joaomoreno.github.io/thyme/).
 
-Controllable through AppleScript.
+Timeroo:
+- Sits unobtrusively in the system menu.
+- Can start, pause, clear, and reset. That's it.
+- Is fully controllable through AppleScript, which means you can easily assign keyboard
+  shortcuts to operate it.
 
