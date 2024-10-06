@@ -4,8 +4,9 @@
     <suite name="Timeroo Suite" code="Tmro" description="Timeroo scripting commands.">
         <command name="toggle" code="TtToggle" description="Start or pause the stopwatch.">
             <cocoa class="Timeroo.ToggleCommand"/>
+            <result type="text" description="Returns `STARTED` or `PAUSED`."/>
         </command>
-        <command name="toggle" code="CccClear" description="Start or pause the stopwatch.">
+        <command name="clear" code="CccClear" description="Reset the stopwatch to zero.">
             <cocoa class="Timeroo.ToggleCommand"/>
         </command>
         <command name="adjust" code="AaAdjust" description="Set stopwatch to specific time.">
@@ -17,9 +18,11 @@
         </command>
         <command name="start" code="SssStart" description="Start the stopwatch if not running.">
             <cocoa class="Timeroo.StartCommand"/>
+            <result type="text" description="Returns `STARTED` or `NOP`."/>
         </command>
         <command name="pause" code="PppPause" description="Pause the stopwatch if running.">
             <cocoa class="Timeroo.PauseCommand"/>
+            <result type="text" description="Returns `PAUSED` or `NOP`."/>
         </command>
     </suite>
 </dictionary>

@@ -5,8 +5,8 @@ import Foundation
 /// Implement the `toggle` AppleScript command
 @objc class ToggleCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
-        TimerooMenu.shared?.startPauseTimer()
-        return nil
+        guard let shared = TimerooMenu.shared else { return nil }
+        return shared.startPauseTimer() ? "STARTED" : "PAUSED"
     }
 }
 
@@ -29,15 +29,15 @@ import Foundation
 /// Implement the `start` AppleScript command
 @objc class StartCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
-        TimerooMenu.shared?.startTimer()
-        return nil
+        guard let shared = TimerooMenu.shared else { return nil }
+        return shared.startTimer() ? "STARTED" : "NOP"
     }
 }
 
 /// Implement the `pause` AppleScript command
 @objc class PauseCommand: NSScriptCommand {
     @objc override func performDefaultImplementation() -> Any? {
-        TimerooMenu.shared?.pauseTimer()
-        return nil
+        guard let shared = TimerooMenu.shared else { return nil }
+        return shared.pauseTimer() ? "PAUSED" : "NOP"
     }
 }

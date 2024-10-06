@@ -106,43 +106,49 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
         }
     }
     
-    @objc func startTimer() {
-        if isPaused {
-            // Start the timer
-            timer = Timer.scheduledTimer(
-                timeInterval: 1.0,
-                target: self,
-                selector: #selector(updateTimer),
-                userInfo: nil,
-                repeats: true
-            )
-            isPaused = false
-            updateStatusBarTitle()
+    /// Return `true` iff timer was started (i.e., not already running)
+    @objc func startTimer() -> Bool {
+        if !isPaused { return false }
 
-            if totalTime == 0 {
-                sendNotification("Starting")
-            } else {
-                sendNotification("Resuming at \(getTimeString())")
-            }
+        // Start the timer
+        timer = Timer.scheduledTimer(
+            timeInterval: 1.0,
+            target: self,
+            selector: #selector(updateTimer),
+            userInfo: nil,
+            repeats: true
+        )
+        isPaused = false
+        updateStatusBarTitle()
+
+        if totalTime == 0 {
+            sendNotification("Starting")
+        } else {
+            sendNotification("Resuming at \(getTimeString())")
         }
+        return true
     }
     
-    @objc func pauseTimer() {
-        if !isPaused {
-            timer?.invalidate()
-            timer = nil
-            isPaused = true
-            updateStatusBarTitle()
-            sendNotification("Pausing at \(getTimeString())")
-        }
+    /// Return `true` iff timer was paused (i.e., not already paused)
+    @objc func pauseTimer() -> Bool {
+        if isPaused { return false }
+
+        timer?.invalidate()
+        timer = nil
+        isPaused = true
+        updateStatusBarTitle()
+        sendNotification("Pausing at \(getTimeString())")
+        return false
     }
 
-    @objc func startPauseTimer() {
+    /// Return whether the timer is running after starting/pausing.
+    @objc func startPauseTimer() -> Bool {
         if isPaused {
-            startTimer()
+            _ = startTimer()
         } else {
-            pauseTimer()
+            _ = pauseTimer()
         }
+        return !isPaused
     }
 
     /// Called every second by the timer
