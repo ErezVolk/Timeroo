@@ -3,13 +3,14 @@
 import Cocoa
 import UserNotifications
 
+
 class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuDelegate {
     /// Allow the AppleScript command objects to access the running app (hack, but I couldn't find a better way)
     static var shared: TimerooMenu?
     var statusItem: NSStatusItem!
     var timer: Timer?
     var totalTime: TimeInterval = 0
-    var isPaused: Bool = true
+    var running: Bool = false
     var setPopover: NSPopover!
     var startPauseCommand: NSMenuItem!
     var clearCommand: NSMenuItem!
@@ -21,7 +22,7 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
         createStatusItem()
         createSetPopover()
         createMenu()
-        updateStatusBarTitle()
+        updateAppearance()
         requestNotificationPermissions()
     }
 
@@ -108,7 +109,7 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
     
     /// Return `true` iff timer was started (i.e., not already running)
     @objc func startTimer() -> Bool {
-        if !isPaused { return false }
+        if running { return false }
 
         // Start the timer
         timer = Timer.scheduledTimer(
@@ -118,8 +119,8 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
             userInfo: nil,
             repeats: true
         )
-        isPaused = false
-        updateStatusBarTitle()
+        running = true
+        updateAppearance()
 
         if totalTime == 0 {
             sendNotification("Starting")
@@ -131,56 +132,65 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
     
     /// Return `true` iff timer was paused (i.e., not already paused)
     @objc func pauseTimer() -> Bool {
-        if isPaused { return false }
+        if !running { return false }
 
         timer?.invalidate()
         timer = nil
-        isPaused = true
-        updateStatusBarTitle()
+        running = false
+        updateAppearance()
         sendNotification("Pausing at \(getTimeString())")
         return false
     }
 
     /// Return whether the timer is running after starting/pausing.
     @objc func startPauseTimer() -> Bool {
-        if isPaused {
-            _ = startTimer()
-        } else {
+        if running {
             _ = pauseTimer()
+        } else {
+            _ = startTimer()
         }
-        return !isPaused
+        return running
     }
 
     /// Called every second by the timer
     @objc func updateTimer() {
         totalTime += 1
-        updateStatusBarTitle()
+        updateAppearance()
     }
 
     @objc func clearTimer() {
         timer?.invalidate()
         timer = nil
         totalTime = 0
-        isPaused = true
-        updateStatusBarTitle()
+        running = false
+        updateAppearance()
     }
 
     @objc func quitApplication() {
         NSApplication.shared.terminate(self)
     }
 
-    func updateStatusBarTitle() {
-        if totalTime == 0 && isPaused {
+    /// Update status bar title and menu options
+    func updateAppearance() {
+        if running {
+            statusItem.button?.image = nil
+            statusItem.button?.title = getTimeString()
+            statusItem.button?.appearsDisabled = false
+            clearCommand.isEnabled = true
+            startPauseCommand.title = "Pause"
+        } else if totalTime > 0 {
+            statusItem.button?.image = nil
+            statusItem.button?.title = getTimeString()
+            statusItem.button?.appearsDisabled = true
+            clearCommand.isEnabled = true
+            startPauseCommand.title = "Resume"
+        } else {
             statusItem.button?.image = idleImage
             statusItem.button?.title = ""
             statusItem.button?.appearsDisabled = false
-        } else {
-            statusItem.button?.image = nil
-            statusItem.button?.title = getTimeString()
-            statusItem.button?.appearsDisabled = isPaused
+            clearCommand.isEnabled = false
+            startPauseCommand.title = "Start"
         }
-        startPauseCommand.title = isPaused ? "Start" : "Pause"
-        clearCommand.isEnabled = totalTime > 0
     }
 
     func getTimeString() -> String {
@@ -230,7 +240,7 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
     @objc func setTimerFromPopover() {
         if let total = parsePopover() {
             totalTime = total
-            updateStatusBarTitle()
+            updateAppearance()
         }
         setPopover.performClose(nil) // Close the popover after setting the timer
     }
@@ -245,7 +255,7 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
     func setTimerFromString(_ timeString: String) -> String {
         if let total = parseTimeString(timeString) {
             totalTime = total
-            updateStatusBarTitle()
+            updateAppearance()
         }
         return getTimeString()
     }
