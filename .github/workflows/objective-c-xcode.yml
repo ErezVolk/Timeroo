@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Build
         run: |
-          xcodebuild clean build analyze -project Timeroo.xcodeproj -scheme "Timeroo" | xcpretty && exit ${PIPESTATUS[0]}
+          xcodebuild clean build analyze -project Timeroo.xcodeproj -scheme "Timeroo" -destination "generic/platform=macOS,name=Any Mac" -destination "generic/platform=iOS,name=Any iOD Device" | xcpretty && exit ${PIPESTATUS[0]}
 #      - uses: mxcl/xcodebuild@v3
 #        with:
 #          scheme: Timeroo
