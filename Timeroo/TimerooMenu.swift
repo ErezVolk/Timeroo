@@ -71,17 +71,20 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
         startPauseCommand = makeItem(title: "Start",
                                      action: #selector(startPauseTimer),
                                      sfName: "playpause.circle")
-        clearCommand = makeItem(title: "Clear",
-                                action: #selector(clearTimer),
-                                sfName: "restart.circle")
+        let clearCommand = makeItem(title: "Clear",
+                                    action: #selector(clearTimer),
+                                    sfName: "restart.circle")
+        let setCommand = makeItem(title: "Set...",
+                                  action: #selector(showSetPopover),
+                                  sfName: "exclamationmark.arrow.circlepath")
+        let quitCommand = makeItem(title: "Quit",
+                                   action: #selector(quitApplication),
+                                   sfName: "eject.circle")
         menu.addItem(startPauseCommand)
+        menu.addItem(setCommand)
         menu.addItem(clearCommand)
-        menu.addItem(makeItem(title: "Set...",
-                              action: #selector(showSetPopover),
-                              sfName: "exclamationmark.arrow.circlepath"))
-
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(makeItem(title: "Quit", action: #selector(quitApplication), sfName: "eject.circle"))
+        menu.addItem(quitCommand)
         menu.autoenablesItems = false
         statusItem.menu = menu
     }
