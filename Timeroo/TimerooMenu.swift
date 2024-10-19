@@ -14,6 +14,8 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
     var setPopover: NSPopover!
     var startPauseCommand: NSMenuItem!
     var clearCommand: NSMenuItem!
+    var setCommand: NSMenuItem!
+    var quitCommand: NSMenuItem!
     let idleImage = NSImage(systemSymbolName: "stopwatch.fill", accessibilityDescription: "timer")
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -71,15 +73,15 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
         startPauseCommand = makeItem(title: "Start",
                                      action: #selector(startPauseTimer),
                                      sfName: "playpause.circle")
-        let clearCommand = makeItem(title: "Clear",
-                                    action: #selector(clearTimer),
-                                    sfName: "restart.circle")
-        let setCommand = makeItem(title: "Set...",
-                                  action: #selector(showSetPopover),
-                                  sfName: "exclamationmark.arrow.circlepath")
-        let quitCommand = makeItem(title: "Quit",
-                                   action: #selector(quitApplication),
-                                   sfName: "eject.circle")
+        clearCommand = makeItem(title: "Clear",
+                                action: #selector(clearTimer),
+                                sfName: "restart.circle")
+        setCommand = makeItem(title: "Set...",
+                              action: #selector(showSetPopover),
+                              sfName: "exclamationmark.arrow.circlepath")
+        quitCommand = makeItem(title: "Quit",
+                               action: #selector(quitApplication),
+                               sfName: "eject.circle")
         menu.addItem(startPauseCommand)
         menu.addItem(setCommand)
         menu.addItem(clearCommand)
