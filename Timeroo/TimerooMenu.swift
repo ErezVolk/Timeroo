@@ -8,6 +8,7 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
     /// Allow the AppleScript command objects to access the running app (hack, but I couldn't find a better way)
     static var shared: TimerooMenu?
     var statusItem: NSStatusItem!
+    var statusButton: NSStatusBarButton!
     var timer: Timer?
     var totalTime: TimeInterval = 0
     var running: Bool = false
@@ -17,6 +18,8 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
     var setCommand: NSMenuItem!
     var quitCommand: NSMenuItem!
     let idleImage = sfImage("stopwatch.fill", description: "timer")
+    let pauseImage = sfImage("pause.circle")
+    let playImage = sfImage("play.circle")
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         TimerooMenu.shared = self
@@ -39,6 +42,7 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
 
     func createStatusItem() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusButton = statusItem.button
     }
 
     func createSetPopover() {
@@ -180,28 +184,28 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
     }
 
     /// Update status bar title and menu options
+    // N.B.: We use alphaValue instead of appearDisabled, otherwise it because too invisible
     func updateAppearance() {
         if running {
-            statusItem.button?.image = nil
-            statusItem.button?.title = getTimeString()
-            statusItem.button?.appearsDisabled = false
+            statusButton.image = nil
+            statusButton.title = getTimeString()
+            statusButton.alphaValue = 1.0
             clearCommand.isEnabled = true
             startPauseCommand.title = "Pause"
-            startPauseCommand.image = TimerooMenu.sfImage("pause.circle")
+            startPauseCommand.image = pauseImage
         } else if totalTime > 0 {
-            statusItem.button?.image = nil
-            statusItem.button?.title = getTimeString()
-            statusItem.button?.appearsDisabled = true
+            statusButton.title = getTimeString()
+            statusButton.alphaValue = 0.5
             clearCommand.isEnabled = true
             startPauseCommand.title = "Resume"
-            startPauseCommand.image = TimerooMenu.sfImage("play.circle")
+            startPauseCommand.image = playImage
         } else {
-            statusItem.button?.image = idleImage
-            statusItem.button?.title = ""
-            statusItem.button?.appearsDisabled = false
+            statusButton.image = idleImage
+            statusButton.title = ""
+            statusButton.alphaValue = 1.0
             clearCommand.isEnabled = false
             startPauseCommand.title = "Start"
-            startPauseCommand.image = TimerooMenu.sfImage("play.circle")
+            startPauseCommand.image = playImage
         }
     }
 
@@ -241,11 +245,9 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
     }
 
     @objc func showSetPopover() {
-        if let button = statusItem.button {
-            setPopover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-            if let textField = getPopoverTextField() {
-                textField.becomeFirstResponder() // Make the text field active
-            }
+        setPopover.show(relativeTo: statusButton.bounds, of: statusButton, preferredEdge: .minY)
+        if let textField = getPopoverTextField() {
+            textField.becomeFirstResponder() // Make the text field active
         }
     }
 
