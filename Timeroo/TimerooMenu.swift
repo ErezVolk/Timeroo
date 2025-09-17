@@ -16,7 +16,7 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
     var clearCommand: NSMenuItem!
     var setCommand: NSMenuItem!
     var quitCommand: NSMenuItem!
-    let idleImage = NSImage(systemSymbolName: "stopwatch.fill", accessibilityDescription: "timer")
+    let idleImage = sfImage("stopwatch.fill", description: "timer")
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         TimerooMenu.shared = self
@@ -91,6 +91,10 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
         statusItem.menu = menu
     }
 
+    static func sfImage(_ sfName: String, description: String? = nil) -> NSImage? {
+        return NSImage(systemSymbolName: sfName, accessibilityDescription: description ?? sfName)
+    }
+    
     /// Create an item for the status menu (wraps `NSMenuItem` constructor)
     /// - parameter sfName: Optional system image name for the menu entry.
     func makeItem(title: String,
@@ -99,7 +103,7 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
                   sfName: String? = nil) -> NSMenuItem {
         let item = NSMenuItem(title: title, action: action, keyEquivalent: "")
         if let sfName {
-            item.image = NSImage(systemSymbolName: sfName, accessibilityDescription: sfName)
+            item.image = TimerooMenu.sfImage(sfName)
         }
         return item
     }
@@ -183,18 +187,21 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
             statusItem.button?.appearsDisabled = false
             clearCommand.isEnabled = true
             startPauseCommand.title = "Pause"
+            startPauseCommand.image = TimerooMenu.sfImage("pause.circle")
         } else if totalTime > 0 {
             statusItem.button?.image = nil
             statusItem.button?.title = getTimeString()
             statusItem.button?.appearsDisabled = true
             clearCommand.isEnabled = true
             startPauseCommand.title = "Resume"
+            startPauseCommand.image = TimerooMenu.sfImage("play.circle")
         } else {
             statusItem.button?.image = idleImage
             statusItem.button?.title = ""
             statusItem.button?.appearsDisabled = false
             clearCommand.isEnabled = false
             startPauseCommand.title = "Start"
+            startPauseCommand.image = TimerooMenu.sfImage("play.circle")
         }
     }
 
