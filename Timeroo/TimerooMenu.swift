@@ -194,6 +194,7 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
             startPauseCommand.title = "Pause"
             startPauseCommand.image = pauseImage
         } else if totalTime > 0 {
+            statusButton.image = nil
             statusButton.title = getTimeString()
             statusButton.alphaValue = 0.5
             clearCommand.isEnabled = true
