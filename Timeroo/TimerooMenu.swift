@@ -195,7 +195,7 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
             startPauseCommand.image = pauseImage
         } else if totalTime > 0 {
             statusButton.image = nil
-            statusButton.title = getTimeString()
+            statusButton.title = "◦\(getTimeString())"
             statusButton.alphaValue = 0.5
             clearCommand.isEnabled = true
             startPauseCommand.title = "Resume"
@@ -210,13 +210,13 @@ class TimerooMenu: NSObject, NSApplicationDelegate, NSTextFieldDelegate, NSMenuD
         }
     }
 
-    func getTimeString() -> String {
+    func getTimeString(_ sep: String = ":") -> String {
         var total = Int(totalTime)
         let seconds = total % 60
         total /= 60
         let minutes = total % 60
         let hours = total / 60
-        let title = String(format: "%d:%02d:%02d", hours, minutes, seconds)
+        let title = String(format: "%d%@%02d%@%02d", hours, sep, minutes, sep, seconds)
         return title
     }
 
