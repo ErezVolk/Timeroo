@@ -16,6 +16,7 @@
 		BA13AB012CA5303F0076CFF5 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = BA13AB002CA5303F0076CFF5 /* TODO.md */; };
 		BA22E0F52CAACFB7008E9730 /* Timeroo.sdef in Resources */ = {isa = PBXBuildFile; fileRef = BA22E0F42CAACFB7008E9730 /* Timeroo.sdef */; };
 		BA22E0F72CAAD2FF008E9730 /* Scripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA22E0F62CAAD2FF008E9730 /* Scripting.swift */; };
+		BA3DC7A12E8AB890004FE673 /* Timeroo.icon in Resources */ = {isa = PBXBuildFile; fileRef = BA3DC7A02E8AB890004FE673 /* Timeroo.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		BA22E0F12CAACE2E008E9730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA22E0F42CAACFB7008E9730 /* Timeroo.sdef */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Timeroo.sdef; sourceTree = "<group>"; };
 		BA22E0F62CAAD2FF008E9730 /* Scripting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scripting.swift; sourceTree = "<group>"; };
+		BA3DC7A02E8AB890004FE673 /* Timeroo.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Timeroo.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		BA00BA8F2CA463B800CE3618 /* Timeroo */ = {
 			isa = PBXGroup;
 			children = (
+				BA3DC7A02E8AB890004FE673 /* Timeroo.icon */,
 				BA22E0F12CAACE2E008E9730 /* Info.plist */,
 				BA00BAA22CA4648500CE3618 /* PopoverWindow.swift */,
 				BA22E0F62CAAD2FF008E9730 /* Scripting.swift */,
@@ -146,6 +149,7 @@
 			files = (
 				BA00BA982CA463BA00CE3618 /* Preview Assets.xcassets in Resources */,
 				BA00BA952CA463BA00CE3618 /* Assets.xcassets in Resources */,
+				BA3DC7A12E8AB890004FE673 /* Timeroo.icon in Resources */,
 				BA00BAA52CA4648500CE3618 /* StartPause.scpt in Resources */,
 				BA22E0F52CAACFB7008E9730 /* Timeroo.sdef in Resources */,
 				BA13AB012CA5303F0076CFF5 /* TODO.md in Resources */,
@@ -290,7 +294,7 @@
 		BA00BA9D2CA463BA00CE3618 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Timeroo;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Timeroo/Timeroo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -318,7 +322,7 @@
 		BA00BA9E2CA463BA00CE3618 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Timeroo;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Timeroo/Timeroo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
