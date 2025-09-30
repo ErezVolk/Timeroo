@@ -1,15 +1,27 @@
 {
-  "fill" : "system-light",
+  "fill-specializations" : [
+    {
+      "value" : {
+        "solid" : "srgb:0.86667,0.25098,0.15294,1.00000"
+      }
+    },
+    {
+      "appearance" : "dark",
+      "value" : {
+        "solid" : "srgb:0.86667,0.25098,0.15294,1.00000"
+      }
+    }
+  ],
   "groups" : [
     {
       "layers" : [
         {
-          "image-name" : "3.2 – layer.svg",
-          "name" : "3.2 – layer"
+          "image-name" : "3.2 – layer 2.svg",
+          "name" : "3.2 – layer 2"
         },
         {
-          "image-name" : "2.1 – layer.svg",
-          "name" : "2.1 – layer"
+          "image-name" : "2.1 – layer 2.svg",
+          "name" : "2.1 – layer 2"
         }
       ],
       "shadow" : {
